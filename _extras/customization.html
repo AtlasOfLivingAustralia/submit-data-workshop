@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.306">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Customizing Your Workshop’s Website</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="customization_files/libs/clipboard/clipboard.min.js"></script>
+<script src="customization_files/libs/quarto-html/quarto.js"></script>
+<script src="customization_files/libs/quarto-html/popper.min.js"></script>
+<script src="customization_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="customization_files/libs/quarto-html/anchor.min.js"></script>
+<link href="customization_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="customization_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="customization_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="customization_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="customization_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Customizing Your Workshop’s Website</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="table-of-content" class="level2">
+<h2 class="anchored" data-anchor-id="table-of-content">Table of Content</h2>
+<ul>
+<li>TOC {:toc}</li>
+</ul>
+</section>
+<section id="configuration-file-_config.yml" class="level2">
+<h2 class="anchored" data-anchor-id="configuration-file-_config.yml">Configuration File <code>_config.yml</code></h2>
+<p>You should edit the <code>_config.yml</code> configuration file in the root directory of your workshop to configure some site-wide variables and make the site function correctly:</p>
+<ul>
+<li><code>carpentry</code> - to tell us which carpentry workshop this is. Possible values are:
+<ul>
+<li><code>"swc"</code> for Software Carpentry workshops,</li>
+<li><code>"dc"</code> for Data Carpentry workshops,</li>
+<li><code>"lc"</code> for Library Carpentry workshops, and</li>
+<li><code>"cp"</code> for general Carpentries events such as instructor trainings (for which you should use <a href="https://github.com/carpentries/training-template" class="uri">https://github.com/carpentries/training-template</a> as the website template).</li>
+<li><code>"incubator"</code> for workshops teaching a lesson in The Carpentries Incubator.</li>
+</ul></li>
+<li><code>curriculum</code> - to tell us which curriculum is being taught. At the moment, applicable to Software and Data Carpentry workshops only. Possible values are:
+<ul>
+<li><code>"dc-astronomy"</code>, <code>"dc-ecology"</code>, <code>"dc-genomics"</code>, <code>"dc-socsci"</code>, <code>"dc-geospatial"</code>, or <code>"dc-image"</code> for Data Carpentry workshops</li>
+<li><code>"swc-inflammation"</code> or <code>"swc-gapminder"</code> for Software Carpentry workshops.</li>
+</ul></li>
+<li><code>flavor</code> - <code>"r"</code> or <code>"python"</code> depending on which lessons are being taught at the workshop (currently only for Data Carpentry and Software Carpentry workshops).</li>
+<li><code>pilot</code> - set this to <code>true</code> if the workshop will be a lesson pilot (of a new official lesson or a lesson in The Carpentries Incubator).</li>
+<li><code>title</code> - overall title for the workshop. If set (i.e., different from “Workshop Title” or empty), it will appear in the “jumbotron” (the gray box at the top of the page). This variable is also used for the title of the extra pages. The README contains <a href="https://github.com/carpentries/workshop-template#creating-extra-pages">more information about extra pages</a>.</li>
+</ul>
+<p>For workshops teaching lessons in The Carpentries Incubator, i.e.&nbsp;where <code>carpentry</code> is set to <code>incubator</code>, you should uncomment the following three fields in <code>_config.yml</code>:</p>
+<ul>
+<li><code>incubator_lesson_site</code> - the URL of the lesson pages that will be taught at the workshop.</li>
+<li><code>incubator_pre_survey</code> - the URL of the pre-workshop survey you have prepared for the pilot workshop. (The standard Carpentries pre- and post-workshop surveys should not be used for Incubator workshops.)</li>
+<li><code>incubator_post_survey</code> - the URL of the post-workshop survey you have prepared for the pilot workshop.</li>
+</ul>
+</section>
+<section id="site-url" class="level2">
+<h2 class="anchored" data-anchor-id="site-url">Site URL</h2>
+<p>GitHub Pages sites are formatted as <code>https://GITHUB_USERNAME.github.io/REPOSITORY_NAME</code>. For example, if the URL for your repository is <code>https://github.com/gvwilson/2015-07-01-oomza</code>, the URL for its website will be <code>http://gvwilson.github.io/2015-07-01-oomza</code>.</p>
+<p>You should not need to modify any of the other variable values in <code>_config.yml</code>.</p>
+</section>
+<section id="home-page-index.md-data-in-the-yaml-header" class="level2">
+<h2 class="anchored" data-anchor-id="home-page-index.md-data-in-the-yaml-header">Home Page (<code>index.md</code>): data in the YAML header</h2>
+<p>Your workshop’s home page lives in <code>index.md</code>, which must define the values below in its header. If your workshop is taught online, see the <a href="#for-online-workshops">online workshops section</a> for customization options.</p>
+<ul>
+<li><p><code>layout</code> must be <code>workshop</code>.</p></li>
+<li><p><code>venue</code> is the short name of the institution or group hosting the workshop, like “Euphoric State University”. It should <em>not</em> include the address or other details, since this value is displayed in a table on websites (e.g., <a href="https://carpentries.org/upcoming_workshops/" class="uri">https://carpentries.org/upcoming_workshops/</a>). See section below for value to use for online workshops.</p></li>
+<li><p><code>address</code> is the workshop’s address (including details like the room number). The address should be all on one line. See section below for value to use for online workshops.</p></li>
+<li><p><code>country</code> must be a two-letter ISO-3166 code for the country in which the workshop is going to take place, such as “fr” (for France) or “nz” (for New Zealand) - see <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements">ISO-3166 codes on Wikipedia</a> for a complete list. See section below for value to use for online workshops.</p></li>
+<li><p><code>language</code> is the language that will be used in the workshop. It must be an <a href="https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes">ISO 639-1 code</a>. Note that two-letter codes mean different things for countries and languages: “ar” is Arabic when used for a language, but Argentina when used for a country.</p></li>
+<li><p><code>latitude</code> and <code>longitude</code> are the latitude and longitude of the workshop site (so we can put a pin on our map). You can use <a href="https://www.latlong.net/">LatLong.net</a> to find these values. See section below for value to use for online workshops.</p></li>
+<li><p><code>humandate</code> is the human-friendly start and end date for the workshop. Please use three-letter month names and abbreviations (e.g., <code>Jul</code> instead of <code>July</code>), since these values are displayed in a table on our websites. (Strictly speaking this information is redundant, since we require a machine-readable <code>startdate</code> and <code>enddate</code>, but reliably translating those into human-readable dates is an interesting challenge…)</p></li>
+<li><p><code>humantime</code> is the human-friendly start and end time for each day of the workshop, e.g., “09:00 am - 4:00 pm” or “09:00-16:00”. (We recognize that we ought to allow different start or end times on different days, but going down that path leads eventually to embedding iCal date/time specifications in our headers, which in turn leads to madness…)</p></li>
+<li><p><code>startdate</code> is the workshop’s starting date in YYYY-MM-DD format, such as <code>2015-07-01</code>. You must use four digits for the year and two each for the month and day.</p></li>
+<li><p><code>enddate</code> is the workshop’s ending date in the same format. If your workshop is only one day long, the <code>enddate</code> field should be deleted. If your workshop has a more complicated schedule (e.g., a half day a week for four weeks), please delete the <code>enddate</code> field and only tell us its start date.</p></li>
+<li><p><code>instructor</code> is a comma-separated list of instructor names. The list must be enclosed in square brackets, and each name must be in double quotes, as in <code>["Alan Turing","Grace Hopper"]</code>. Do not include other information (such as the word “instructor”) in these values.</p></li>
+<li><p><code>helper</code> is a comma-separated list of helper names formatted in the same way as the instructor names. If there are no helpers, use an empty list <code>[]</code>.</p></li>
+<li><p><code>contact</code> is the contact email address to use for your workshop. If you do not provide a contact email address, your website will display the address for the workshop coordinators (who probably won’t be able to answer questions about the specific details of your workshop).</p></li>
+</ul>
+<p>The header may optionally define the following:</p>
+<ul>
+<li><p><code>collaborative_notes</code> is the URL for the Etherpad for your workshop. If you are not using an Etherpad, you can delete this line. You can <a href="https://pad.carpentries.org/">create a carpentries etherpad here</a>.</p></li>
+<li><p><code>eventbrite</code> is the multi-digit Eventbrite registration key. If you are using Eventbrite, the Carpentries Regional Coordinators will give this to you. If you are using something else, you may delete this line. Note: this value must be given as a string in double quotes, rather than as a number.</p></li>
+</ul>
+<section id="for-online-workshops" class="level3">
+<h3 class="anchored" data-anchor-id="for-online-workshops">For online workshops</h3>
+<p>If the workshop is online, follow the same instructions as above with the following modifications:</p>
+<ul>
+<li><code>venue</code>: Use the name of the institution that organizes the workshop and do not include a mention that it is an online workshop.</li>
+<li><code>address</code>: If you can safely share the URL for the videoconferencing, you may list it here (it must start with <code>http</code> or <code>https</code>); if you cannot or prefer to not share the videoconferencing information, use the value <code>online</code>.</li>
+<li><code>country</code>: Please use the country associated with the host institution for the workshop.</li>
+<li><code>latitude</code> and <code>longitude</code>: if it makes sense, use the coordinates for the host institution. If it does not, use <code>0</code> for both the latitude and the longitude.</li>
+</ul>
+<p>By default, the Setup Instructions will list the installation instructions for the videoconferencing service Zoom. If you use a different videoconferencing service, you can edit the file in <code>_includes/install_instructions/videoconferencing.html</code> to include the relevant installation instructions.</p>
+</section>
+</section>
+<section id="home-page-schedule" class="level2">
+<h2 class="anchored" data-anchor-id="home-page-schedule">Home Page: Schedule</h2>
+<p>By default, the template displays the typical schedule for your workshop based on the values of the variables set in the <code>_config.yml</code>. If you need to make minor modifications to this schedule, you can edit the <code>schedule.html</code> file found in the sub-folder of the <code>_includes</code> folder that matches the type of workshop you will be teaching (<code>dc</code>, <code>lc</code>, or <code>swc</code>).</p>
+<p>If you wish to create your own custom schedule, an empty template is available in <code>_includes/custom-schedule.html</code>. In this file, we provide the structure for a 4-day workshop as it is often used for online workshops. To use this custom schedule instead of the one provided by default in the template, delete the block of code found under the “Schedule” header in the <code>index.md</code> file and replace it with<code>{% raw %}{% include custom-schedule.html %}{% endraw %}</code>.</p>
+<p>The schedule is formatted using a table. If you would like to learn more about how to write tables in HTML, here is an <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table">HTML table overview from Mozilla</a> and the <a href="https://www.w3schools.com/html/html_tables.asp">HTML tables chapter from w3schools</a>.</p>
+<p>For pilot workshops, some placeholder text including a link to the lesson homepage will be displayed instead of a schedule table. The lesson homepage will contain estimated timings for teaching the lesson. Use the approach described above for <code>_includes/custome-schedule.html</code> if you would like to create a schedule table to replace this text.</p>
+</section>
+<section id="home-page-setup-instructions" class="level2">
+<h2 class="anchored" data-anchor-id="home-page-setup-instructions">Home Page: Setup Instructions</h2>
+<p>If you need assistance with customizing the setup instructions for your website, feel free to ask your questions in the Carpentries <a href="https://swcarpentry.slack.com/archives/C08BVNU00">Instructors Slack channel</a> (<a href="https://swc-slack-invite.herokuapp.com/">join The Carpentries Slack workspace</a>).</p>
+<section id="software-carpentry-workshops" class="level3">
+<h3 class="anchored" data-anchor-id="software-carpentry-workshops">Software Carpentry workshops</h3>
+<section id="default-settings" class="level4">
+<h4 class="anchored" data-anchor-id="default-settings">Default settings</h4>
+<p>For Software Carpentry workshops, setting the <code>flavor</code> variable in <code>_config.yml</code> to <code>r</code> or <code>python</code> will include the respective installation instructions for these tools. Additionally, by default, the installation instructions for a text editor, the Bash shell, and Git are included.</p>
+</section>
+<section id="if-you-need-to-remove-tools" class="level4">
+<h4 class="anchored" data-anchor-id="if-you-need-to-remove-tools">If you need to remove tools</h4>
+<p>If you need to remove any of the instructions for the default set of tools, you can delete lines that include these instructions in the <code>_includes/swc/setup.html</code> file.</p>
+</section>
+<section id="if-you-need-to-add-tools" class="level4">
+<h4 class="anchored" data-anchor-id="if-you-need-to-add-tools">If you need to add tools</h4>
+<p>If you need to add installation instructions for other tools, we provide installation instructions for SQL and OpenRefine. To make them appear on your workshop website, you can move the <code>{% raw %}{% include %}{% endraw %}</code> statements outside the comment block in <code>_includes/swc/setup.html</code>.</p>
+<p>If you need to add installation instructions for other tools, you will need to write your own. You can use installation instructions for other tools located in the <code>_includes/install_instructions/</code> folder as examples.</p>
+</section>
+</section>
+<section id="data-carpentry-workshops" class="level3">
+<h3 class="anchored" data-anchor-id="data-carpentry-workshops">Data Carpentry workshops</h3>
+<p>For Data Carpentry workshops, installation instructions live on the workshop overview page for each curriculum. Instead of including installation instructions in the workshop template, the workshop template includes links to these instructions. The correct link will be displyed when using the appropriate combination of values for the <code>curriculum</code> and <code>flavor</code> variables in the <code>_config.yml</code> file.</p>
+</section>
+<section id="library-carpentry-workshops" class="level3">
+<h3 class="anchored" data-anchor-id="library-carpentry-workshops">Library Carpentry workshops</h3>
+<p>By default, Library Carpentry workshop websites include installation instructions for the Bash shell and Git.</p>
+<p>You may need to add installation instructions for additional tools you will be using during your workshop by editing the <code>_includes/lc/setup.html</code> file. You can either write your own instructions using the ones provided in <code>_includes/lc/setup.html</code> as an example, or, if you are using tools that already have installation instructions provided for Software Carpentry, you can add <code>{% raw %}{% include install_instructions/&lt;filename.html&gt; %}{% endraw %}</code> where <code>&lt;filename.html&gt;</code> needs to be replaced by one of the files in the <code>_includes/install_instructions</code> folder.</p>
+</section>
+</section>
+<section id="homepage-who-can-attend" class="level2">
+<h2 class="anchored" data-anchor-id="homepage-who-can-attend">Homepage: who can attend?</h2>
+<p>If you want to specify who can attend the workshop you are advertising, there is a commented-out section in <code>index.md</code> that you can use to inform workshop website visitors of who can attend the event. You may want to specify that only members of your university, department, etc. can attend or that the event is open to the public. We don’t provide templated text for this as each situation is different. We do provide a section, called “Who can attend?” for you to specify this information.</p>
+<p>To use it, move the {% raw %}{% endcomment %}{% endraw %} line above the <code>&lt;p&gt;</code> tag marking the beginning of this section and edit the paragraph to reflect the attendance policy for your workshop.</p>
+</section>
+<section id="updating-the-repository" class="level2">
+<h2 class="anchored" data-anchor-id="updating-the-repository">Updating the repository</h2>
+<p>If for some reason, such as the installation instructions having become disconnected with the current lesson material, you need to get changes from this repository into the clone of it with your workshop page, please follow the steps bellow:</p>
+<ol type="1">
+<li><p>Add the workshop-template repository as upstream: ~~~ $ git remote add upstream https://github.com/carpentries/workshop-template.git ~~~ {: .language-bash}</p></li>
+<li><p>Fetch the data from upstream repository (also know as the workshop-template repository): ~~~ $ git pull upstream ~~~ {: .language-bash}</p></li>
+<li><p>Address possible merge conflicts, and ~~~ $ git commit -a ~~~ {: .language-bash}</p></li>
+<li><p>Push the changes to your repository on GitHub: ~~~ $ git push origin gh-pages ~~~ {: .language-bash}</p></li>
+</ol>
+<p>{% include links.md %}</p>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
