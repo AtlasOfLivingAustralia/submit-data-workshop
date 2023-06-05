@@ -11,9 +11,8 @@ objectives:
 - "Matching scientific names to the ALA."
 - "Converting latitude and longitude variations to decimal degrees North and East."
 keypoints:
-- "When doing conversions it's best to break out your data into it's component pieces."
+- "When doing conversions it's best to break out your data into its component pieces."
 - "Dates are messy to deal with. Some packages have easy solutions, otherwise use regular expressions to align date strings to ISO 8601."
-- "WoRMS LSIDs are a requirement for OBIS."
 - "Latitude and longitudes are like dates, they can be messy to deal with. Take a similar approach."
 ---
 
@@ -370,10 +369,11 @@ To find the taxa you want, go to the [Name matching service](https://bie.ala.org
 
 > ## Using the ALA Name Matching Tool
 > Go to [Name matching service](https://bie.ala.org.au/search) and type either the scientific or common name of your species.
->    Hit `search` and find the result that is closest to your species
->    ![screenshot]({{ page.root }}/fig/species_file_screenshot.png){: .image-with-shadow }
+>    ![screenshot]({{ page.root }}/fig/ALA_Namematching_NoTaxa.png){: .image-with-shadow }
+> 
+> Hit `Search` and find the result that is the exact, or closest match, to your species name.
+>    ![screenshot]({{ page.root }}/fig/ALA_Namematching_FrogTaxa.png){: .image-with-shadow }
 >
-> Ensure your species name in your data matches that of the one on the ALA.
 {: .solution}
 
 # Getting lat/lon to decimal degrees
